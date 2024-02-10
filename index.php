@@ -4,6 +4,13 @@
 
 include "bootsrap/init.php";
 
+$folders = getFolders();
+
+var_dump($folders[0]->name);
+
+$tasks = getTasks();
+
+
 include "tpl/tpl-index.php";
 
 

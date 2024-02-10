@@ -21,13 +21,16 @@
         </div>
       </div>
       <div class="menu">
-        <div class="title">Navigation</div>
+        <div class="title">FOLDERS</div>
         <ul>
-          <li> <i class="fa fa-home"></i>Home</li>
-          <li><i class="fa fa-signal"></i>Activity</li>
-          <li class="active"> <i class="fa fa-tasks"></i>Manage Tasks</li>
-          <li> <i class="fa fa-envelope"></i>Messages</li>
+          <li> <i class="fa fa-folder"></i>Home</li>
+          <li class="active"> <i class="fa fa-folder"></i>Current folder</li>
+          
         </ul>
+        <div>
+          <input type="text" id="newFolderInput" style="width: 50%" placeholder="add new folder"/>
+          <button id="newFolderButton"> + </button>
+        </div>
       </div>
     </div>
     <div class="view">
