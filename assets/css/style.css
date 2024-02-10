@@ -55,6 +55,17 @@ body {
   line-height: 40px;
   padding-right: 10px;
 }
+a.remove {
+  color: red;
+  float: right;
+  padding-right: 5px;
+  font-weight: 200;
+
+}
+a.remove:hover {
+  font-weight: 1200;
+}
+
 .pageHeader .userPanel .username {
   float: right;
   line-height: 40px;
@@ -120,6 +131,11 @@ body {
 .main .nav .menu ul {
   padding-left: 0px;
 }
+
+.main .nav .menu ul li a {
+  text-decoration: none;
+}
+  
 .main .nav .menu ul li {
   cursor: pointer;
   list-style: none;

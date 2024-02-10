@@ -23,7 +23,14 @@
       <div class="menu">
         <div class="title">FOLDERS</div>
         <ul>
-          <li> <i class="fa fa-folder"></i>Home</li>
+          <?php foreach ($folders as $folder):?>
+            <li>
+            <!-- میگه این فولدر با این ایدی  بیا و نشون بده اسمشم که از دیتابیس گرفتی نشون بده -->
+            <a href="?folder_id=<?=$folder->id ?>"><i class="fa fa-folder"></i><?= $folder->name ?></a>
+            <a href="?delete_folder=<?=$folder->id ?>" class="remove" > X </a>
+          <!-- #میگه    -->
+          </li>
+            <?php endforeach;?>
           <li class="active"> <i class="fa fa-folder"></i>Current folder</li>
           
         </ul>

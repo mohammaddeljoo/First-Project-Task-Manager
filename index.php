@@ -4,13 +4,15 @@
 
 include "bootsrap/init.php";
 
-$folders = getFolders();
+if (isset($_GET['delete_folder']) && is_numeric($_GET['delete_folder']) ){
+    $deletedcount = deleteFolder($_GET['delete_folder']);
+    echo "$deletedcount folders succesfully deleted!!!!";
+}
 
-var_dump($folders[0]->name);
+$folders = getFolders();
 
 $tasks = getTasks();
 
 
 include "tpl/tpl-index.php";
-
 
