@@ -1,0 +1,21 @@
+{
+    "name": "mardin/7todo",
+    "description": "A Simple Todo List Project (with php , ajax)",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mardin\\7todo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ahura",
+            "email": "ahuradeljoo@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "hekmatinasser/verta": "^8.3"
+    }
+}
