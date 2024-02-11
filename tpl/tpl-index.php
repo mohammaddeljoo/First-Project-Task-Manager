@@ -25,7 +25,7 @@
         <ul>
           <?php foreach ($folders as $folder):?>
             <li>
-            <!-- میگه این فولدر با این ایدی  بیا و نشون بده اسمشم که از دیتابیس گرفتی نشون بده -->
+            <!-- میگه این لینک با این پارامترارسال کن به پست و گت و... بعد فولدر با این ایدی  بیا و نشون بده اسمشم که از دیتابیس گرفتی نشون بده -->
             <a href="?folder_id=<?=$folder->id ?>"><i class="fa fa-folder"></i><?= $folder->name ?></a>
             <a href="?delete_folder=<?=$folder->id ?>" class="remove" > X </a>
           <!-- #میگه    -->
@@ -35,8 +35,8 @@
           
         </ul>
         <div>
-          <input type="text" id="newFolderInput" style="width: 50%" placeholder="add new folder"/>
-          <button id="newFolderButton"> + </button>
+          <input type="text" id="addFolderInput" style="width: 50%" placeholder="add new folder"/>
+          <button id="addFolderButton"> + </button>
         </div>
       </div>
     </div>
@@ -81,7 +81,31 @@
   </div>
 </div>
 <!-- partial -->
-  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="<?= BASE_URL ?>assets/js/script.js"></script>
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script  src="<?= BASE_URL ?>assets/js/script.js"></script>
+
+  <script>
+
+    $(document).ready(function(){
+      $('#addFolderButton').click(function(e){
+        var input = $('input#addFolderInput');
+        alert(input.val());
+        $.ajax({
+          url: "process/ajaxHandler.php",
+          method: "post",
+          data: {action:"addFolder",folderName:input.val()},
+          success: function(response){
+            alert(response);
+          }
+        });
+
+      });
+
+    });      
+
+
+
+  </script>
 
 </body>
 </html>

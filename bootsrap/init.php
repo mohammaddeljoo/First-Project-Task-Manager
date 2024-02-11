@@ -1,8 +1,10 @@
 <?php
 
 include "constans.php";
-include "config.php";
-include "vendor/autoload.php";
+include BASE_PATH . "bootsrap/config.php";
+include BASE_PATH . "vendor/autoload.php";
+include BASE_PATH . "libs/helpers.php";
+
 
 
 try {
@@ -15,6 +17,5 @@ catch(PDOException $e) {
 // echo "CCCoooooooooonectedd";
 
 
-include "libs/helpers.php";
-include "libs/lib-auth.php";
-include "libs/lib-task.php";
+include BASE_PATH . "libs/lib-auth.php";
+include BASE_PATH . "libs/lib-task.php";
