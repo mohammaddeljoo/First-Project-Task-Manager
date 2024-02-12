@@ -50,6 +50,12 @@ body {
   width: 40%;
   float: right;
 }
+
+span.created-at {
+  font-size: 12px;
+  margin-right: 15px;
+}
+
 .pageHeader .userPanel i {
   float: right;
   line-height: 40px;
@@ -134,8 +140,11 @@ a.remove:hover {
 
 .main .nav .menu ul li a {
   text-decoration: none;
-}
   
+}
+.main .nav .menu ul li a {
+  text-decoration: none;
+}
 .main .nav .menu ul li {
   cursor: pointer;
   list-style: none;
