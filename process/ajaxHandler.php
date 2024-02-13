@@ -16,8 +16,22 @@ switch ($_POST['action']){
         echo addFolder($_POST['folderName']);
     break;
 
-    case "addTasks":
-        var_dump($_POST['action']);
+    case "addTask":
+        $folderId = $_POST['folderId'];
+        $taskTitle = $_POST['taskTitle'];
+        if(!isset($folderId) || empty($folderId)){
+            echo "فولدر را انتخاب کنید.";
+            die();
+        }
+        if(!isset($taskTitle) || strlen($taskTitle) < 3){
+            echo "عنوان تسک باید بزرگتر از 2 حرف باشد.";
+            die();
+        }
+         echo addTask($taskTitle,$folderId);
+
+        //  echo addTask($_POST['taskTitle'],$_POST['folderId']);
+        
+
     break;
 
     default:

@@ -66,7 +66,7 @@
             <i class="fa <?= $task->is_done ? 'fa-check-square-o' : 'fa-square-o' ; ?>"></i>
             <span><?= $task->title ?></span>
               <div class="info">
-                <span class='created-at'> Created <?= $task->created_at ?></span>
+                <span class='created-at'> Created :  <?= $task->created_at ?></span>
                 <a href="?delete_task=<?= $task->id ?>" class="remove" onclick="return confirm('آیا برای دلیت کردن مطمِن هستید؟؟!!')"> X </a>
               </div>
             </li>
@@ -107,10 +107,34 @@
         });
 
       });
+    ///////////////////
 
-    });      
+    $('#addTaskInput').on('keypress',function(e) {
+        if(e.which == 13) {
+          $.ajax({
+          url: "process/ajaxHandler.php",
+          method: "post",
+          data : {action: "addTask",folderId : <?= $_GET['folder_id'] ?? 0 ?> ,taskTitle: $('#addTaskInput').val()},
+          success: function(response){
+            if(response == '1')
+            {
+              location.reload();
+            }else{
+            alert(response);
+            }
+          }
+        });
 
 
+
+            
+
+
+        }
+    });
+
+    $('#addTaskInput').focus();
+  });    
 
   </script>
 

@@ -63,3 +63,24 @@ function addFolder($folder_name){
     $stmt->execute([':folder_name'=>$folder_name,':user_id'=>$current_user_id]);
     return $stmt->rowCount();
 }
+////////////////////////////////////
+
+function addTask($taskTitle,$folderId){
+    global $pdo;
+    $current_user_id = getCurrentUserId();
+    $sql = "INSERT INTO `tasks` (title,user_id,folder_id) VALUES (:title,:user_id,:folder_id);";
+
+   // $sql = "INSERT INTO `tasks` (`title`, `user_id`, `folder_id`) VALUES (:title,:user_id,:folder_id);";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':title'=>$taskTitle,':user_id'=>$current_user_id,':folder_id'=>$folderId]);
+    return $stmt->rowCount();
+}
+// function addTask($taskTitle,$folderId){
+//     global $pdo;
+//     $current_user_id = getCurrentUserId();
+//     $sql = "INSERT INTO `tasks` (title,user_id,folder_id) VALUES (:title,:user_id,:folder_id);";
+//     $stmt = $pdo->prepare($sql);
+//     $stmt->execute([':title'=>$taskTitle,':user_id'=>$current_user_id,':folder_id'=>$folderId]);
+//     return $stmt->rowCount();
+// }
