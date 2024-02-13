@@ -69,18 +69,15 @@ function addTask($taskTitle,$folderId){
     global $pdo;
     $current_user_id = getCurrentUserId();
     $sql = "INSERT INTO `tasks` (title,user_id,folder_id) VALUES (:title,:user_id,:folder_id);";
-
-   // $sql = "INSERT INTO `tasks` (`title`, `user_id`, `folder_id`) VALUES (:title,:user_id,:folder_id);";
-
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':title'=>$taskTitle,':user_id'=>$current_user_id,':folder_id'=>$folderId]);
     return $stmt->rowCount();
 }
-// function addTask($taskTitle,$folderId){
-//     global $pdo;
-//     $current_user_id = getCurrentUserId();
-//     $sql = "INSERT INTO `tasks` (title,user_id,folder_id) VALUES (:title,:user_id,:folder_id);";
-//     $stmt = $pdo->prepare($sql);
-//     $stmt->execute([':title'=>$taskTitle,':user_id'=>$current_user_id,':folder_id'=>$folderId]);
-//     return $stmt->rowCount();
-// }
+function doneSwitch($task_id){
+    global $pdo;
+    $current_user_id = getCurrentUserId();
+    $sql = "UPDATE `tasks` SET is_done = 1-is_done where user_id = :userId and id = :taskId";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':userId'=>$current_user_id,':taskId'=>$task_id]);
+    return $stmt->rowCount();
+}

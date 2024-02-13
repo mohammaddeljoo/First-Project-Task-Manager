@@ -12,6 +12,19 @@ if(!isset($_POST['action']) || empty($_POST['action'])){
 
 
 switch ($_POST['action']){
+    case "doneSwitch":
+
+        $task_id = $_POST['taskId'];
+        if(!isset($task_id) || empty($task_id)){
+            echo "ای دی تسک معتبر نیست";
+            die();
+        }
+
+
+        doneSwitch($task_id);
+
+    break;
+
     case "addFolder":
         echo addFolder($_POST['folderName']);
     break;

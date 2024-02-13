@@ -23,7 +23,8 @@
       <div class="menu">
         <div class="title">FOLDERS</div>
         <ul class="folder-list">
-        <li class="<?= isset($_GET['folder_id']) ? '' : 'active' ?>"> <i class="fa fa-folder"></i> ALL </li>
+        <li class="<?= isset($_GET['folder_id']) ? '' : 'active' ?>"> 
+        <a href="<?= site_url() ?>" ><i class="fa fa-folder"></i> ALL </a></li>
 
           <?php foreach ($folders as $folder):?>
                         <!-- میگه این لینک با این پارامترارسال کن به پست و گت و... بعد فولدر با این ایدی  بیا و نشون بده اسمشم که از دیتابیس گرفتی نشون بده -->
@@ -63,7 +64,7 @@
 
           <?php foreach ($tasks as $task):  ?>
             <li class="<?= $task->is_done ? 'checked' : '' ; ?>">
-            <i class="fa <?= $task->is_done ? 'fa-check-square-o' : 'fa-square-o' ; ?>"></i>
+            <i data-taskId="<?= $task->id ?>" class="isDone clickabke fa <?= $task->is_done ? 'fa-check-square-o' : 'fa-square-o' ; ?>"></i>
             <span><?= $task->title ?></span>
               <div class="info">
                 <span class='created-at'> Created :  <?= $task->created_at ?></span>
@@ -90,6 +91,23 @@
   <script>
 
     $(document).ready(function(){
+
+      $('.isDone').click(function(e){
+        var tid = $(this).attr('data-taskId') //اینو از تگ آی دان شده یا نشده گرفتیم) تسک ای دی رو اینجوری گرفتیم
+
+        $.ajax({
+          url: "process/ajaxHandler.php",
+          method: "post",
+          data: {action:"doneSwitch",taskId :tid},
+          success: function(response){
+            location.reload();
+
+
+          }
+        });
+
+      });
+      ////////////////////////////
       $('#addFolderButton').click(function(e){
         var input = $('input#addFolderInput');
         alert(input.val());

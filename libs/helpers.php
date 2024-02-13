@@ -20,3 +20,7 @@ function dd($var){
     var_dump($var);
     echo "</pre>";
 }
+
+function site_url($url = ''){
+    return BASE_URL . $url;
+}
