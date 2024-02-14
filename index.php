@@ -4,6 +4,15 @@
 
 include "bootsrap/init.php";
 
+
+
+if(!isLoggedIn()){
+    header("Location:". site_url('auth.php'));
+}
+
+
+
+
 if (isset($_GET['delete_folder']) && is_numeric($_GET['delete_folder']) ){
     $deletedcount = deleteFolder($_GET['delete_folder']);
     echo "$deletedcount folders succesfully deleted!!!!";
