@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include "constans.php";
 include BASE_PATH . "bootsrap/config.php";
 include BASE_PATH . "vendor/autoload.php";

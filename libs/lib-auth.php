@@ -1,6 +1,38 @@
 <?php
-function login($user,$password){
-    return 1;
+
+function getCurrentUserId(){
+    return getLoggedInUser()->id ?? 0;
+}
+
+function isLoggedIn(){
+    return isset($_SESSION['login']) ? true : false;
+}
+
+
+function getLoggedInUser(){
+    return $_SESSION['login'] ?? null;
+}
+
+function login($email,$pass){
+    $user = getUserByEmail($email);
+    if(is_null($user)){
+        return false;
+    }
+    if(password_verify($pass,$user->password)){
+
+        $_SESSION['login'] = $user;
+        return true;
+    }
+    return false;
+}
+
+function getUserByEmail($email){
+    global $pdo;
+    $sql = "SELECT * FROM `users` WHERE email =:email ";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':email'=>$email]);
+    $records = $stmt->fetchAll(PDO::FETCH_OBJ);
+    return $records[0] ?? null;
 }
 
 
@@ -14,7 +46,13 @@ function register($userData){
     return $stmt->rowCount();
 }
 
-function isLoggedIn(){
-    return false;
+
+function logout(){
+    unset($_SESSION['login']);
 }
+
+// function getCurrentUserId(){
+//     return getLoggedInUser()->id ?? 0;
+// }
+
 

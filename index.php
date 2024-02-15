@@ -6,6 +6,10 @@ include "bootsrap/init.php";
 
 
 
+if(isset($_GET['logout'])){
+    logout(); 
+}
+
 if(!isLoggedIn()){
     header("Location:". site_url('auth.php'));
 }

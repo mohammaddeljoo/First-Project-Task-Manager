@@ -12,11 +12,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         if(!$result){
             echo "Error register...!";
         }else{
-            echo "your now registered <br> <a href='$home_url'> Go To Tasks Manager</a>";
+            echo "your now registered <br> <a href='{$home_url}auth.php'>please Login</a>";
         }
+
     }else if($action == 'login'){
-       $result =  login($params['email'],$params['password']);
-       dd($result);
+        $result =  login($params['email'],$params['password']);
+        if(!$result){
+            echo "error : email or adddres try agane!";
+        }else {
+           header("Location:$home_url");
+
+    
+        }
     }
 }
 
